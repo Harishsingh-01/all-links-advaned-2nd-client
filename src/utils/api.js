@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 👉 PRODUCTION BACKEND (Render)
-const API_URL = axios.create({
+const api = axios.create({
   baseURL: 'https://all-links-advaned-2nd-server.onrender.com/api',
 });
 
@@ -14,9 +14,13 @@ const api = axios.create({
 });
 */
 
+// ============================
+// Projects API Functions
+// ============================
+
 export const getProjects = async () => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await api.get('/projects');
     return response.data;
   } catch (error) {
     console.error('Error fetching projects:', error);
@@ -26,7 +30,7 @@ export const getProjects = async () => {
 
 export const getProject = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/${id}`);
+    const response = await api.get(`/projects/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching project:', error);
@@ -36,7 +40,7 @@ export const getProject = async (id) => {
 
 export const createProject = async (projectData) => {
   try {
-    const response = await axios.post(API_URL, projectData);
+    const response = await api.post('/projects', projectData);
     return response.data;
   } catch (error) {
     console.error('Error creating project:', error);
@@ -46,7 +50,7 @@ export const createProject = async (projectData) => {
 
 export const updateProject = async (id, projectData) => {
   try {
-    const response = await axios.put(`${API_URL}/${id}`, projectData);
+    const response = await api.put(`/projects/${id}`, projectData);
     return response.data;
   } catch (error) {
     console.error('Error updating project:', error);
@@ -56,7 +60,7 @@ export const updateProject = async (id, projectData) => {
 
 export const deleteProject = async (id) => {
   try {
-    const response = await axios.delete(`${API_URL}/${id}`);
+    const response = await api.delete(`/projects/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error deleting project:', error);
@@ -66,11 +70,10 @@ export const deleteProject = async (id) => {
 
 export const updateLastOpened = async (id) => {
   try {
-    const response = await axios.patch(`${API_URL}/${id}/last-opened`);
+    const response = await api.patch(`/projects/${id}/last-opened`);
     return response.data;
   } catch (error) {
     console.error('Error updating last opened:', error);
     throw error;
   }
 };
-
