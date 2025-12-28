@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 👉 PRODUCTION BACKEND (Render)
-const api = axios.create({
+const API_URL = axios.create({
   baseURL: 'https://all-links-advaned-2nd-server.onrender.com/api',
 });
 
