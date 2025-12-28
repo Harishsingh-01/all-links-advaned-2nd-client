@@ -1,6 +1,18 @@
 import axios from 'axios';
 
-const API_URL = '/api/projects';
+// 👉 PRODUCTION BACKEND (Render)
+const api = axios.create({
+  baseURL: 'https://all-links-advaned-2nd-server.onrender.com/api',
+});
+
+/*
+👉 LOCAL BACKEND (use when running backend locally)
+Uncomment this and comment the above block if needed
+
+const api = axios.create({
+  baseURL: 'http://localhost:5000/api',
+});
+*/
 
 export const getProjects = async () => {
   try {
