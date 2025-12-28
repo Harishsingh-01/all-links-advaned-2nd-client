@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://all-links-advaned-2nd-server.onrender.com',
         changeOrigin: true,
       },
     },
