@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-accent: #ec4899;
+  --color-background: #111827;
+  --color-background-gradient: #1f2937;
+  --color-card-bg: rgba(31, 41, 55, 0.5);
+  --color-card-border: rgba(75, 85, 99, 0.5);
+  --color-text: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-border: rgba(75, 85, 99, 0.5);
+  --color-input-bg: rgba(17, 24, 39, 0.5);
+  --color-button-hover: #2563eb;
+}
+
+@layer base {
+  * {
+    @apply border-gray-700/50;
+  }
+  
+  body {
+    background: var(--color-background);
+    color: var(--color-text);
+    @apply antialiased;
+  }
+  
+  input, textarea, select {
+    @apply placeholder-gray-500;
+  }
+}
+
