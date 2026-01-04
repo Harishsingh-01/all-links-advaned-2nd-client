@@ -12,6 +12,24 @@ api.interceptors.request.use((config) => {
   return config
 })
 
+// Global response interceptor: if token is invalid/expired, remove it and broadcast logout so all tabs update
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error?.response?.status === 401) {
+      try {
+        localStorage.removeItem('token')
+        // notify other tabs and listeners in this tab
+        window.dispatchEvent(new Event('logout'))
+      } catch (e) {
+        // ignore
+      }
+    }
+    return Promise.reject(error)
+  }
+)
+
+
 /*
 👉 LOCAL BACKEND (use when running backend locally)
 Uncomment this and comment the above block if needed
