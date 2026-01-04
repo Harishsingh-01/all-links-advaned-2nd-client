@@ -88,10 +88,7 @@ const ProjectForm = ({ project, onSave, onCancel }) => {
                 borderColor: 'var(--color-border)',
                 '--tw-ring-color': 'var(--color-primary)',
               }}
-              style={{ 
-                borderColor: 'var(--color-border)',
-                '--tw-ring-color': 'var(--color-primary)',
-              }}
+          
               required
               placeholder="My Awesome Project"
             />
@@ -111,10 +108,7 @@ const ProjectForm = ({ project, onSave, onCancel }) => {
                 borderColor: 'var(--color-border)',
                 '--tw-ring-color': 'var(--color-primary)',
               }}
-              style={{ 
-                borderColor: 'var(--color-border)',
-                '--tw-ring-color': 'var(--color-primary)',
-              }}
+             
               placeholder="PORTFOLIO, Frontend, Backend, etc."
             />
           </div>
@@ -132,10 +126,7 @@ const ProjectForm = ({ project, onSave, onCancel }) => {
                 borderColor: 'var(--color-border)',
                 '--tw-ring-color': 'var(--color-primary)',
               }}
-              style={{ 
-                borderColor: 'var(--color-border)',
-                '--tw-ring-color': 'var(--color-primary)',
-              }}
+             
             >
               <option>Stable</option>
               <option>Debugging</option>
@@ -212,10 +203,7 @@ const ProjectForm = ({ project, onSave, onCancel }) => {
                 borderColor: 'var(--color-border)',
                 '--tw-ring-color': 'var(--color-primary)',
               }}
-              style={{ 
-                borderColor: 'var(--color-border)',
-                '--tw-ring-color': 'var(--color-primary)',
-              }}
+              
             />
           </div>
 
@@ -234,10 +222,7 @@ const ProjectForm = ({ project, onSave, onCancel }) => {
                 borderColor: 'var(--color-border)',
                 '--tw-ring-color': 'var(--color-primary)',
               }}
-              style={{ 
-                borderColor: 'var(--color-border)',
-                '--tw-ring-color': 'var(--color-primary)',
-              }}
+              
             />
           </div>
 

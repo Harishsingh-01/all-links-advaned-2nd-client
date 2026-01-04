@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harish-mern-projects.vercel.app/sitemap.xml
