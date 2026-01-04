@@ -9,7 +9,10 @@ const AuthActions = () => {
   const { isAuthenticated, logout } = useAuth()
   return isAuthenticated ? (
     <button
-      onClick={() => logout()}
+      onClick={() => {
+        logout()
+        navigate('/login')
+      }}
       className="px-3 py-2 bg-red-600/80 rounded-lg text-sm font-medium text-white"
     >
       Logout

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '../utils/api'
 import { useAuth } from '../context/AuthContext'
@@ -8,7 +8,12 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const { login } = useAuth()
+  const { login, isAuthenticated } = useAuth()
+
+  // If already authenticated, go straight to dashboard
+  useEffect(() => {
+    if (isAuthenticated) navigate('/dashboard')
+  }, [isAuthenticated, navigate])
 
   const handleSubmit = async (e) => {
     e.preventDefault()

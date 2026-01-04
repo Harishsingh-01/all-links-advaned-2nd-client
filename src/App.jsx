@@ -125,6 +125,9 @@ function AppContent() {
         </ProtectedRoute>
       } />
 
+      {/* Catch-all: redirect unknown routes to root (which goes to /login) */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+
     </Routes>
   )
 }
