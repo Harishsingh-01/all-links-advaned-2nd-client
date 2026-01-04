@@ -30,6 +30,25 @@
   
   input, textarea, select {
     @apply placeholder-gray-500;
+    background: var(--color-input-bg);
+    color: var(--color-text);
+    border-color: var(--color-border);
+    caret-color: var(--color-text);
+  }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.08);
+    background: rgba(17,24,39,0.6);
+  }
+
+  /* Autofill styling to preserve dark input bg and readable text */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-text) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-input-bg) inset !important;
+    box-shadow: 0 0 0px 1000px var(--color-input-bg) inset !important;
   }
 }
 

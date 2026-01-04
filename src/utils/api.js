@@ -5,6 +5,13 @@ const api = axios.create({
   baseURL: 'https://all-links-advaned-2nd-server.onrender.com/api',
 });
 
+// Attach token automatically when present in localStorage
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token')
+  if (token) config.headers.Authorization = `Bearer ${token}`
+  return config
+})
+
 /*
 👉 LOCAL BACKEND (use when running backend locally)
 Uncomment this and comment the above block if needed
@@ -13,6 +20,19 @@ const api = axios.create({
   baseURL: 'http://localhost:5000/api',
 });
 */
+
+// ============================
+// Auth API
+// ============================
+export const loginUser = async (email, password) => {
+  try {
+    const response = await api.post('/auth/login', { email, password })
+    return response.data
+  } catch (error) {
+    console.error('Error logging in:', error)
+    throw error
+  }
+}
 
 // ============================
 // Projects API Functions

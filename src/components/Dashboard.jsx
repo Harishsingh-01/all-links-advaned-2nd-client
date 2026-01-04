@@ -2,6 +2,27 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProjectCard from './ProjectCard'
 import ProjectForm from './ProjectForm'
+import { useAuth } from '../context/AuthContext'
+
+const AuthActions = () => {
+  const navigate = useNavigate()
+  const { isAuthenticated, logout } = useAuth()
+  return isAuthenticated ? (
+    <button
+      onClick={() => logout()}
+      className="px-3 py-2 bg-red-600/80 rounded-lg text-sm font-medium text-white"
+    >
+      Logout
+    </button>
+  ) : (
+    <button
+      onClick={() => navigate('/login')}
+      className="px-3 py-2 bg-emerald-600/80 rounded-lg text-sm font-medium text-white"
+    >
+      Login
+    </button>
+  )
+}
 
 const Dashboard = ({ projects, loading, onProjectsChange, addProjectRef }) => {
   const [showAddForm, setShowAddForm] = useState(false)
@@ -71,13 +92,24 @@ const Dashboard = ({ projects, loading, onProjectsChange, addProjectRef }) => {
               Manage all your projects in one place
             </p>
           </div>
-          <button
-            onClick={() => navigate('/theme')}
-            className="px-4 py-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-lg text-sm font-medium text-gray-100 hover:bg-gray-700 transition-all flex items-center gap-2"
-            style={{ borderColor: 'var(--color-border)' }}
-          >
-            🎨 Theme
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => navigate('/form')}
+              className="px-3 py-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-lg text-sm font-medium text-gray-100 hover:bg-gray-700 transition-all"
+              style={{ borderColor: 'var(--color-border)' }}
+            >
+              ➕ New
+            </button>
+            <button
+              onClick={() => navigate('/theme')}
+              className="px-4 py-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-lg text-sm font-medium text-gray-100 hover:bg-gray-700 transition-all flex items-center gap-2"
+              style={{ borderColor: 'var(--color-border)' }}
+            >
+              🎨 Theme
+            </button>
+            {/* Auth actions */}
+            <AuthActions />
+          </div>
         </div>
       </div>
 

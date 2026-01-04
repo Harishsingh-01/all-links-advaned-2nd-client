@@ -102,6 +102,14 @@ The backend API will be available at `http://localhost:5000`
 - `DELETE /api/projects/:id` - Delete project
 - `PATCH /api/projects/:id/last-opened` - Update last opened timestamp
 
+## Auth & Backend Notes 🔧
+
+- New auth endpoints added under `server/routes/auth.js` (`/api/auth/login` and `/api/auth/register`).
+- Protected project-write endpoints (POST/PUT/DELETE) on `/api/projects` now require a Bearer JWT.
+- Server dependencies added: `bcryptjs`, `jsonwebtoken` — run `cd server && npm install` to install.
+- Make sure to set `JWT_SECRET` in your environment (e.g., a `.env` file) for production; a fallback secret is used for development only.
+
+
 ## Keyboard Shortcuts
 
 - `Ctrl/Cmd + N` - Add new project

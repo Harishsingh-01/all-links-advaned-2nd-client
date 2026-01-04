@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
 import Dashboard from './components/Dashboard'
 import ThemeCustomizer from './pages/ThemeCustomizer'
+import Login from './pages/Login'
+import FormPage from './pages/FormPage'
 import { getProjects } from './utils/api'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import { HelmetProvider, Helmet } from 'react-helmet-async'
@@ -40,8 +44,13 @@ function AppContent() {
 
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/login" replace />} />
       <Route
-        path="/"
+        path="/login"
+        element={<Login />}
+      />
+      <Route
+        path="/dashboard"
         element={
           <div
             className="min-h-screen"
@@ -103,7 +112,19 @@ function AppContent() {
           </div>
         }
       />
-      <Route path="/theme" element={<ThemeCustomizer />} />
+
+      <Route path="/form" element={
+        <ProtectedRoute>
+          <FormPage />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/theme" element={
+        <ProtectedRoute>
+          <ThemeCustomizer />
+        </ProtectedRoute>
+      } />
+
     </Routes>
   )
 }
@@ -112,9 +133,11 @@ function App() {
   return (
     <HelmetProvider>
       <ThemeProvider>
-        <Router>
-          <AppContent />
-        </Router>
+        <AuthProvider>
+          <Router>
+            <AppContent />
+          </Router>
+        </AuthProvider>
       </ThemeProvider>
     </HelmetProvider>
   )
